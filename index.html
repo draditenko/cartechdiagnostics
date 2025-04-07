@@ -5,6 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>CAR TECH DIAGNOSTICS</title>
+  <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
   <style>
     body {
       margin: 0;
@@ -13,7 +14,7 @@
       color: #fff;
     }
     header, footer { background: rgba(18, 18, 18, 0.9); padding: 20px; text-align: center; }
-    nav a { margin: 0 10px; color: #0077ff; text-decoration: none; font-weight: bold; }
+    nav a { margin: 0 10px; color: #0077ff; text-decoration: none; font-weight: bold; cursor: pointer; }
     .hero, .services, .software, .contact { padding: 40px 20px; text-align: center; }
     .services-grid, .software-grid {
       display: flex;
@@ -33,6 +34,8 @@
     .contact img { max-width: 250px; margin-top: 20px; border-radius: 10px; }
     footer p { font-size: 0.8rem; margin: 5px 0; color: #888; }
     .date-time { font-size: 0.8rem; margin-top: 10px; color: #bbb; }
+    .lang-selector { margin-top: 10px; }
+    .lang-selector button { margin: 0 5px; padding: 5px 10px; cursor: pointer; border: none; border-radius: 5px; background: #0077ff; color: white; }
   </style>
 </head>
 
@@ -40,66 +43,42 @@
 
 <header>
   <img src="logo.png" alt="Logo" style="max-width: 150px; margin-bottom: 10px;">
-  <h1>CAR TECH DIAGNOSTICS</h1>
+  <h1 id="site-title">CAR TECH DIAGNOSTICS</h1>
   <nav>
-    <a href="#services">Services</a>
-    <a href="#software">Software</a>
-    <a href="#contact">Contact</a>
+    <a onclick="scrollToSection('services')">Services</a>
+    <a onclick="scrollToSection('software')">Software</a>
+    <a onclick="scrollToSection('contact')">Contact</a>
   </nav>
+  <div class="lang-selector">
+    <button onclick="setLanguage('en')">🇬🇧</button>
+    <button onclick="setLanguage('ru')">🇷🇺</button>
+    <button onclick="setLanguage('es')">🇪🇸</button>
+    <button onclick="setLanguage('de')">🇩🇪</button>
+    <button onclick="setLanguage('cz')">🇨🇿</button>
+  </div>
 </header>
 
-<section class="hero">
-  <h2>Professional Auto Diagnostics and ECU Repair</h2>
-  <p>Electronics. Tuning. Solutions.</p>
+<section class="hero" data-aos="fade-up">
+  <h2 id="hero-title">Professional Auto Diagnostics and ECU Repair</h2>
+  <p id="hero-subtitle">Electronics. Tuning. Solutions.</p>
 </section>
 
-<section id="services" class="services">
-  <h2>Our Services</h2>
-  <div class="services-grid">
-    <div><p>Car Diagnostics</p></div>
-    <div><p>ECU Repair</p></div>
-    <div><p>Chip-Tuning</p></div>
-    <div><p>Module Coding</p></div>
-    <div><p>Stage 1/2 Projects</p></div>
-    <div><p>Mechatronics PCB Repair</p></div>
-  </div>
+<section id="services" class="services" data-aos="fade-up">
+  <h2 id="services-title">Our Services</h2>
+  <div class="services-grid" id="services-list"></div>
 </section>
 
-<section id="software" class="software">
-  <h2>Software We Use</h2>
-  <div class="software-grid">
-    <div><p>Launch</p></div>
-    <div><p>VCDS</p></div>
-    <div><p>ODIS</p></div>
-    <div><p>JLR SDD</p></div>
-    <div><p>PIWIS</p></div>
-    <div><p>Xentry</p></div>
-    <div><p>DAS</p></div>
-    <div><p>Vediamo</p></div>
-    <div><p>DTS Monaco</p></div>
-    <div><p>ICOM</p></div>
-    <div><p>ISTA</p></div>
-    <div><p>INPA</p></div>
-    <div><p>FORScan</p></div>
-    <div><p>AlfaOBD</p></div>
-    <div><p>Abritus</p></div>
-    <div><p>Kess</p></div>
-    <div><p>KTag</p></div>
-    <div><p>KT200</p></div>
-    <div><p>CarProg</p></div>
-    <div><p>XGPro</p></div>
-    <div><p>StageX</p></div>
-    <div><p>ProjectX</p></div>
-    <div><p>VAG C-CAN Commander</p></div>
-  </div>
+<section id="software" class="software" data-aos="fade-up">
+  <h2 id="software-title">Software We Use</h2>
+  <div class="software-grid" id="software-list"></div>
 </section>
 
-<section id="contact" class="contact">
-  <h2>Contact Us</h2>
-  <p>📱 WhatsApp / Telegram / Viber: +420 722 590 772</p>
-  <p>📧 Email: draditenko@gmail.com</p>
-  <p>🎵 TikTok: @r_dan_soft</p>
-  <p>💸 PayPal Donation: @Dansoft3</p>
+<section id="contact" class="contact" data-aos="fade-up">
+  <h2 id="contact-title">Contact Us</h2>
+  <p id="contact-phone">📱 WhatsApp / Telegram / Viber: +420 722 590 772</p>
+  <p id="contact-email">📧 Email: draditenko@gmail.com</p>
+  <p id="contact-social">🎵 TikTok: @r_dan_soft</p>
+  <p id="contact-paypal">💸 PayPal Donation: @Dansoft3</p>
   <img src="business_card.png" alt="Business Card">
 </section>
 
@@ -109,7 +88,107 @@
   <p class="date-time" id="dateTime"></p>
 </footer>
 
+<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
 <script>
+  AOS.init();
+
+  const translations = {
+    en: {
+      siteTitle: "CAR TECH DIAGNOSTICS",
+      heroTitle: "Professional Auto Diagnostics and ECU Repair",
+      heroSubtitle: "Electronics. Tuning. Solutions.",
+      servicesTitle: "Our Services",
+      servicesList: ["Car Diagnostics", "ECU Repair", "Chip-Tuning", "Module Coding", "Stage 1/2 Projects", "Mechatronics PCB Repair"],
+      softwareTitle: "Software We Use",
+      contactTitle: "Contact Us",
+      contactPhone: "📱 WhatsApp / Telegram / Viber: +420 722 590 772",
+      contactEmail: "📧 Email: draditenko@gmail.com",
+      contactSocial: "🎵 TikTok: @r_dan_soft",
+      contactPaypal: "💸 PayPal Donation: @Dansoft3"
+    },
+    ru: {
+      siteTitle: "АВТОТЕХ ДИАГНОСТИКА",
+      heroTitle: "Профессиональная диагностика и ремонт ЭБУ",
+      heroSubtitle: "Электроника. Тюнинг. Решения.",
+      servicesTitle: "Наши Услуги",
+      servicesList: ["Диагностика автомобилей", "Ремонт ЭБУ", "Чип-тюнинг", "Кодирование модулей", "Проекты Stage 1/2", "Ремонт плат мехатроников"],
+      softwareTitle: "Программное обеспечение",
+      contactTitle: "Связаться с нами",
+      contactPhone: "📱 WhatsApp / Telegram / Viber: +420 722 590 772",
+      contactEmail: "📧 Email: draditenko@gmail.com",
+      contactSocial: "🎵 TikTok: @r_dan_soft",
+      contactPaypal: "💸 Пожертвование PayPal: @Dansoft3"
+    },
+    es: {
+      siteTitle: "DIAGNÓSTICO TECNOLÓGICO DEL AUTOMÓVIL",
+      heroTitle: "Diagnóstico profesional y reparación de ECU",
+      heroSubtitle: "Electrónica. Tuning. Soluciones.",
+      servicesTitle: "Nuestros Servicios",
+      servicesList: ["Diagnóstico de coches", "Reparación de ECU", "Chip-Tuning", "Codificación de módulos", "Proyectos Stage 1/2", "Reparación de PCB mecatrónica"],
+      softwareTitle: "Software que usamos",
+      contactTitle: "Contáctanos",
+      contactPhone: "📱 WhatsApp / Telegram / Viber: +420 722 590 772",
+      contactEmail: "📧 Correo electrónico: draditenko@gmail.com",
+      contactSocial: "🎵 TikTok: @r_dan_soft",
+      contactPaypal: "💸 Donación PayPal: @Dansoft3"
+    },
+    de: {
+      siteTitle: "KFZ-TECHNIK DIAGNOSE",
+      heroTitle: "Professionelle Fahrzeugdiagnose und ECU-Reparatur",
+      heroSubtitle: "Elektronik. Tuning. Lösungen.",
+      servicesTitle: "Unsere Dienstleistungen",
+      servicesList: ["Fahrzeugdiagnose", "ECU-Reparatur", "Chiptuning", "Modulkodierung", "Stage 1/2 Projekte", "Mechatronik PCB Reparatur"],
+      softwareTitle: "Verwendete Software",
+      contactTitle: "Kontaktieren Sie uns",
+      contactPhone: "📱 WhatsApp / Telegram / Viber: +420 722 590 772",
+      contactEmail: "📧 E-Mail: draditenko@gmail.com",
+      contactSocial: "🎵 TikTok: @r_dan_soft",
+      contactPaypal: "💸 PayPal Spende: @Dansoft3"
+    },
+    cz: {
+      siteTitle: "AUTO TECHNICKÁ DIAGNOSTIKA",
+      heroTitle: "Profesionální diagnostika a oprava ECU",
+      heroSubtitle: "Elektronika. Tuning. Řešení.",
+      servicesTitle: "Naše Služby",
+      servicesList: ["Diagnostika automobilů", "Oprava ECU", "Chip-Tuning", "Kódování modulů", "Projekty Stage 1/2", "Oprava PCB mechatroniky"],
+      softwareTitle: "Používaný software",
+      contactTitle: "Kontaktujte nás",
+      contactPhone: "📱 WhatsApp / Telegram / Viber: +420 722 590 772",
+      contactEmail: "📧 Email: draditenko@gmail.com",
+      contactSocial: "🎵 TikTok: @r_dan_soft",
+      contactPaypal: "💸 PayPal Dar: @Dansoft3"
+    }
+  };
+
+  function setLanguage(lang) {
+    const t = translations[lang];
+    document.getElementById('site-title').innerText = t.siteTitle;
+    document.getElementById('hero-title').innerText = t.heroTitle;
+    document.getElementById('hero-subtitle').innerText = t.heroSubtitle;
+    document.getElementById('services-title').innerText = t.servicesTitle;
+    document.getElementById('software-title').innerText = t.softwareTitle;
+    document.getElementById('contact-title').innerText = t.contactTitle;
+    document.getElementById('contact-phone').innerText = t.contactPhone;
+    document.getElementById('contact-email').innerText = t.contactEmail;
+    document.getElementById('contact-social').innerText = t.contactSocial;
+    document.getElementById('contact-paypal').innerText = t.contactPaypal;
+
+    const servicesList = document.getElementById('services-list');
+    servicesList.innerHTML = '';
+    t.servicesList.forEach(service => {
+      const div = document.createElement('div');
+      div.innerHTML = `<p>${service}</p>`;
+      servicesList.appendChild(div);
+    });
+  }
+
+  function scrollToSection(id) {
+    document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
+  }
+
+  // Установим язык по умолчанию
+  setLanguage('en');
+
   function updateDateTime() {
     const dt = new Date();
     const options = { year: 'numeric', month: 'long', day: 'numeric', hour: '2-digit', minute: '2-digit' };
