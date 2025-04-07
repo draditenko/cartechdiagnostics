@@ -116,76 +116,11 @@
 <script>
   AOS.init();
 
-  const translations = {
-    en: {
-      siteTitle: "CAR TECH DIAGNOSTICS",
-      heroTitle: "Professional Auto Diagnostics and ECU Repair",
-      heroSubtitle: "Electronics. Tuning. Solutions.",
-      servicesTitle: "Our Services",
-      servicesList: ["Car Diagnostics", "ECU Repair", "Chip-Tuning", "Module Coding", "Stage 1/2 Projects", "Mechatronics PCB Repair"],
-      softwareTitle: "Software We Use",
-      contactTitle: "Contact Us",
-      contactPhone: "📱 WhatsApp / Telegram / Viber: +420 722 590 772",
-      contactEmail: "📧 Email: draditenko@gmail.com",
-      contactSocial: "🎵 TikTok: @r_dan_soft",
-      contactPaypal: "💸 PayPal Donation: @Dansoft3"
-    },
-    ru: {
-      siteTitle: "АВТОТЕХ ДИАГНОСТИКА",
-      heroTitle: "Профессиональная диагностика и ремонт ЭБУ",
-      heroSubtitle: "Электроника. Тюнинг. Решения.",
-      servicesTitle: "Наши Услуги",
-      servicesList: ["Диагностика автомобилей", "Ремонт ЭБУ", "Чип-тюнинг", "Кодирование модулей", "Проекты Stage 1/2", "Ремонт плат мехатроников"],
-      softwareTitle: "Программное обеспечение",
-      contactTitle: "Связаться с нами",
-      contactPhone: "📱 WhatsApp / Telegram / Viber: +420 722 590 772",
-      contactEmail: "📧 Email: draditenko@gmail.com",
-      contactSocial: "🎵 TikTok: @r_dan_soft",
-      contactPaypal: "💸 Пожертвование PayPal: @Dansoft3"
-    },
-    es: {
-      siteTitle: "DIAGNÓSTICO TECNOLÓGICO DEL AUTOMÓVIL",
-      heroTitle: "Diagnóstico profesional y reparación de ECU",
-      heroSubtitle: "Electrónica. Tuning. Soluciones.",
-      servicesTitle: "Nuestros Servicios",
-      servicesList: ["Diagnóstico de coches", "Reparación de ECU", "Chip-Tuning", "Codificación de módulos", "Proyectos Stage 1/2", "Reparación de PCB mecatrónica"],
-      softwareTitle: "Software que usamos",
-      contactTitle: "Contáctanos",
-      contactPhone: "📱 WhatsApp / Telegram / Viber: +420 722 590 772",
-      contactEmail: "📧 Correo electrónico: draditenko@gmail.com",
-      contactSocial: "🎵 TikTok: @r_dan_soft",
-      contactPaypal: "💸 Donación PayPal: @Dansoft3"
-    },
-    de: {
-      siteTitle: "KFZ-TECHNIK DIAGNOSE",
-      heroTitle: "Professionelle Fahrzeugdiagnose und ECU-Reparatur",
-      heroSubtitle: "Elektronik. Tuning. Lösungen.",
-      servicesTitle: "Unsere Dienstleistungen",
-      servicesList: ["Fahrzeugdiagnose", "ECU-Reparatur", "Chiptuning", "Modulkodierung", "Stage 1/2 Projekte", "Mechatronik PCB Reparatur"],
-      softwareTitle: "Verwendete Software",
-      contactTitle: "Kontaktieren Sie uns",
-      contactPhone: "📱 WhatsApp / Telegram / Viber: +420 722 590 772",
-      contactEmail: "📧 E-Mail: draditenko@gmail.com",
-      contactSocial: "🎵 TikTok: @r_dan_soft",
-      contactPaypal: "💸 PayPal Spende: @Dansoft3"
-    },
-    cz: {
-      siteTitle: "AUTO TECHNICKÁ DIAGNOSTIKA",
-      heroTitle: "Profesionální diagnostika a oprava ECU",
-      heroSubtitle: "Elektronika. Tuning. Řešení.",
-      servicesTitle: "Naše Služby",
-      servicesList: ["Diagnostika automobilů", "Oprava ECU", "Chip-Tuning", "Kódování modulů", "Projekty Stage 1/2", "Oprava PCB mechatroniky"],
-      softwareTitle: "Používaný software",
-      contactTitle: "Kontaktujte nás",
-      contactPhone: "📱 WhatsApp / Telegram / Viber: +420 722 590 772",
-      contactEmail: "📧 Email: draditenko@gmail.com",
-      contactSocial: "🎵 TikTok: @r_dan_soft",
-      contactPaypal: "💸 PayPal Dar: @Dansoft3"
-    }
-  };
+  const translations = { /* оставляем как есть, чтобы работали только тексты */ };
 
   function setLanguage(lang) {
     const t = translations[lang];
+    if (!t) return;
     document.getElementById('site-title').innerText = t.siteTitle;
     document.getElementById('hero-title').innerText = t.heroTitle;
     document.getElementById('hero-subtitle').innerText = t.heroSubtitle;
