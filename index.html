@@ -65,7 +65,14 @@
 
 <section id="services" class="services" data-aos="fade-up">
   <h2 id="services-title">Our Services</h2>
-  <div class="services-grid" id="services-list"></div>
+  <div class="services-grid">
+    <div><p>Car Diagnostics</p></div>
+    <div><p>ECU Repair</p></div>
+    <div><p>Chip-Tuning</p></div>
+    <div><p>Module Coding</p></div>
+    <div><p>Stage 1/2 Projects</p></div>
+    <div><p>Mechatronics PCB Repair</p></div>
+  </div>
 </section>
 
 <section id="software" class="software" data-aos="fade-up">
@@ -116,7 +123,68 @@
 <script>
   AOS.init();
 
-  const translations = { /* оставляем как есть, чтобы работали только тексты */ };
+  const translations = {
+    en: {
+      siteTitle: "CAR TECH DIAGNOSTICS",
+      heroTitle: "Professional Auto Diagnostics and ECU Repair",
+      heroSubtitle: "Electronics. Tuning. Solutions.",
+      servicesTitle: "Our Services",
+      softwareTitle: "Software We Use",
+      contactTitle: "Contact Us",
+      contactPhone: "📱 WhatsApp / Telegram / Viber: +420 722 590 772",
+      contactEmail: "📧 Email: draditenko@gmail.com",
+      contactSocial: "🎵 TikTok: @r_dan_soft",
+      contactPaypal: "💸 PayPal Donation: @Dansoft3"
+    },
+    ru: {
+      siteTitle: "АВТОТЕХ ДИАГНОСТИКА",
+      heroTitle: "Профессиональная диагностика и ремонт ЭБУ",
+      heroSubtitle: "Электроника. Тюнинг. Решения.",
+      servicesTitle: "Наши Услуги",
+      softwareTitle: "Программное обеспечение",
+      contactTitle: "Связаться с нами",
+      contactPhone: "📱 WhatsApp / Telegram / Viber: +420 722 590 772",
+      contactEmail: "📧 Email: draditenko@gmail.com",
+      contactSocial: "🎵 TikTok: @r_dan_soft",
+      contactPaypal: "💸 Пожертвование PayPal: @Dansoft3"
+    },
+    es: {
+      siteTitle: "DIAGNÓSTICO TECNOLÓGICO DEL AUTOMÓVIL",
+      heroTitle: "Diagnóstico profesional y reparación de ECU",
+      heroSubtitle: "Electrónica. Tuning. Soluciones.",
+      servicesTitle: "Nuestros Servicios",
+      softwareTitle: "Software que usamos",
+      contactTitle: "Contáctanos",
+      contactPhone: "📱 WhatsApp / Telegram / Viber: +420 722 590 772",
+      contactEmail: "📧 Correo electrónico: draditenko@gmail.com",
+      contactSocial: "🎵 TikTok: @r_dan_soft",
+      contactPaypal: "💸 Donación PayPal: @Dansoft3"
+    },
+    de: {
+      siteTitle: "KFZ-TECHNIK DIAGNOSE",
+      heroTitle: "Professionelle Fahrzeugdiagnose und ECU-Reparatur",
+      heroSubtitle: "Elektronik. Tuning. Lösungen.",
+      servicesTitle: "Unsere Dienstleistungen",
+      softwareTitle: "Verwendete Software",
+      contactTitle: "Kontaktieren Sie uns",
+      contactPhone: "📱 WhatsApp / Telegram / Viber: +420 722 590 772",
+      contactEmail: "📧 E-Mail: draditenko@gmail.com",
+      contactSocial: "🎵 TikTok: @r_dan_soft",
+      contactPaypal: "💸 PayPal Spende: @Dansoft3"
+    },
+    cz: {
+      siteTitle: "AUTO TECHNICKÁ DIAGNOSTIKA",
+      heroTitle: "Profesionální diagnostika a oprava ECU",
+      heroSubtitle: "Elektronika. Tuning. Řešení.",
+      servicesTitle: "Naše Služby",
+      softwareTitle: "Používaný software",
+      contactTitle: "Kontaktujte nás",
+      contactPhone: "📱 WhatsApp / Telegram / Viber: +420 722 590 772",
+      contactEmail: "📧 Email: draditenko@gmail.com",
+      contactSocial: "🎵 TikTok: @r_dan_soft",
+      contactPaypal: "💸 PayPal Dar: @Dansoft3"
+    }
+  };
 
   function setLanguage(lang) {
     const t = translations[lang];
@@ -131,14 +199,6 @@
     document.getElementById('contact-email').innerText = t.contactEmail;
     document.getElementById('contact-social').innerText = t.contactSocial;
     document.getElementById('contact-paypal').innerText = t.contactPaypal;
-
-    const servicesList = document.getElementById('services-list');
-    servicesList.innerHTML = '';
-    t.servicesList.forEach(service => {
-      const div = document.createElement('div');
-      div.innerHTML = `<p>${service}</p>`;
-      servicesList.appendChild(div);
-    });
   }
 
   function scrollToSection(id) {
@@ -149,8 +209,8 @@
 
   function updateDateTime() {
     const dt = new Date();
-    const options = { year: 'numeric', month: 'long', day: 'numeric', hour: '2-digit', minute: '2-digit' };
-    document.getElementById('dateTime').innerHTML = "📅 Today: " + dt.toLocaleDateString('en-US', options);
+    const options = { year: 'numeric', month: 'long', day: 'numeric', hour: '2-digit', minute: '2-digit', hour12: false };
+    document.getElementById('dateTime').innerHTML = "📅 Today: " + dt.toLocaleDateString('en-US', options) + ", " + dt.toLocaleTimeString('en-US', options);
   }
   updateDateTime();
 </script>
